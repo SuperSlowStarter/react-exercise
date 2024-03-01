@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HIHI</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      //class 나 for 같은 js용어를 사용하지 않을 것
+      //class -> className, for -> htmlFor
+      const App = () => {
+        return (
+          <div>
+            <h1>Super converter</h1>
+            <label for="minutes">Minutes</label>
+            <input id="minutes" placeholder="Minutes" type="number" />
+            <label for="hours">Hours</label>
+            <input id="hours" placeholder="Hours" type="number" />
+          </div>
+        );
+      };
+      const root = document.getElementById("root");
+      ReactDOM.render(<App />, root);
+    </script>
+  </body>
+</html>
