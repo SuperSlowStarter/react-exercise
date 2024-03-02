@@ -1,32 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>HIHI</title>
-  </head>
 
-  <body>
-    <div id="root"></div>
+<head>
+  <title>HIHI</title>
+</head>
 
-    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<body>
+  <div id="root"></div>
 
-    <script type="text/babel">
-      //class ë‚˜ for ê°™ì€ jsìš©ì–´ë¥¼ ì‚¬ìš©í•˜ì§€ ì•Šì„ ê²ƒ
-      //class -> className, for -> htmlFor
-      const App = () => {
-        return (
-          <div>
-            <h1>Super converter</h1>
-            <label for="minutes">Minutes</label>
-            <input id="minutes" placeholder="Minutes" type="number" />
-            <label for="hours">Hours</label>
-            <input id="hours" placeholder="Hours" type="number" />
-          </div>
-        );
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+
+    //class ³ª for °°Àº js¿ë¾î¸¦ »ç¿ëÇÏÁö ¾ÊÀ» °Í
+    ///class -> className, for -> htmlFor º»·¡ ¹Ýº¹¹®ÀÎ for°ú Çò°¥¸®Áö ¾Ê±â À§ÇØ¼­
+    const App = () => {
+      const [minutes, setMinutes] = React.useState(0); //useState?Š” arrayë¥? ? œê³?
+      const onChange = (event) => {
+        setMinutes(event.target.value);
       };
-      const root = document.getElementById("root");
-      ReactDOM.render(<App />, root);
-    </script>
-  </body>
+      const reset = () => setMinutes(0);
+      return (
+        <div>
+          <h1 className="hi">Super converter</h1>
+          <div>
+            <label htmlfor="minutes">Minutes</label>
+            <input
+              value={minutes}
+              id="minutes"
+              placeholder="Minutes"
+              type="number"
+              onChange={onChange}
+            ></input>
+          </div>
+          <div>
+            <label htmlfor="hours">Hours</label>
+            <input value={Math.round(minutes / 60)} id="hours" placeholder="Hours" type="number" disabled />
+          </div>
+          <button onClick={reset}>Reset</button>
+        </div>
+      );
+    };
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</body>
+
 </html>
